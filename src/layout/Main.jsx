@@ -3,16 +3,18 @@
 import { Col, Container, Row } from "react-bootstrap";
 import Footer from "../pages/Shared/Footer/Footer";
 import Header from "../pages/Shared/Header/Header";
+import RightNav from "../pages/Shared/RightNav/RightNav";
+import LeftNav from "../pages/Shared/LeftNav/LeftNav";
 
 const Main = () => {
     return (
-        <div>
+        <div >
             <Header></Header>
             <Container>
-                <Row>
-                    <Col md={3}>Left site area start ....</Col>
+                <Row className="py-3">
+                    <Col md={3}><LeftNav></LeftNav></Col>
                     <Col md={6}>Main content aerea start .....</Col>
-                    <Col md={3}>Right site area ......</Col>
+                    <Col md={3}><RightNav></RightNav></Col>
                 </Row>
             </Container>
             <Footer></Footer>
