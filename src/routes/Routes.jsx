@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
-import Home from "../pages/Home/Home/Home";
 import Catagory from "../pages/Home/Catagory/Catagory";
 import NewsLayout from "../layout/newsLayout";
 import News from "../pages/News/News/News";
@@ -12,11 +11,13 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home></Home>
+                element: <Catagory></Catagory>,
+                loader: () => fetch(`http://localhost:5000/news`),
             },
             {
-                path: "/category/:id",
-                element: <Catagory></Catagory>
+                path: "/category/:teamId",
+                element: <Catagory></Catagory>,
+                loader: async ({ params }) => fetch(`http://localhost:5000/categories/${params.teamId}`),
             },
         ],
     },
@@ -25,8 +26,9 @@ const router = createBrowserRouter([
         element: <NewsLayout></NewsLayout>,
         children: [
             {
-                path: ":id",
-                element: <News></News>
+                path: ":paramId",
+                element: <News></News>,
+                loader: ({ params }) => fetch(`http://localhost:5000/news/${params.paramId}`)
             },
         ],
     },

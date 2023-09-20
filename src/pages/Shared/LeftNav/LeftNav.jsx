@@ -1,7 +1,8 @@
 // import React from 'react';       
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { UserProvider } from "../../../provider/AuthProvider";
 
 const LeftNav = () => {
     const [categories, setCategories] = useState([])
@@ -12,9 +13,10 @@ const LeftNav = () => {
             .then(data => setCategories(data))
             .catch(error => console.error(error))
     }, [])
+    const { displayName } = useContext(UserProvider);
     return (
         <div>
-            <h3>All Caterogy</h3>
+            <h3>All Caterogy {displayName}</h3>
             <div>
                 {
                     categories.map((categrie) => <div key={categrie.id}>

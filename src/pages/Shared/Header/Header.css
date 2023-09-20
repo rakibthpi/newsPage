@@ -4,3 +4,10 @@
     object-fit: cover;
     padding-top: 15px;
 }
+
+.menu a {
+    display: inline-block;
+    padding: 3px 7px;
+    color: #000;
+    font-size: 16px;
+}
