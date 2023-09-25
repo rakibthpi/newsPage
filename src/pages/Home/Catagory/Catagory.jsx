@@ -5,7 +5,6 @@ import NewsCard from "../NewsCard/NewsCard";
 
 const Catagory = () => {
     const { teamId } = useParams()
-    console.log(teamId);
     const newsData = useLoaderData();
 
     return (

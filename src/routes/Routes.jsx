@@ -1,21 +1,39 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
 import Catagory from "../pages/Home/Catagory/Catagory";
 import NewsLayout from "../layout/newsLayout";
 import News from "../pages/News/News/News";
+import LoginLayout from "../layout/LoginLayout";
+import Login from "../pages/Login/Login";
+import Register from "../pages/Login/Register";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <Main></Main>,
+        path: '/',
+        element: <LoginLayout></LoginLayout>,
         children: [
             {
                 path: "/",
-                element: <Catagory></Catagory>,
-                loader: () => fetch(`http://localhost:5000/news`),
+                element: <Navigate to="/category/0" replace={true} />,
             },
             {
-                path: "/category/:teamId",
+                path: 'login',
+                element: <Login></Login>
+            },
+            {
+                path: 'register',
+                element: <Register></Register>
+            },
+        ]
+    },
+    {
+        path: "category",
+        element: <Main></Main>,
+        children: [
+
+            {
+                path: ":teamId",
                 element: <Catagory></Catagory>,
                 loader: async ({ params }) => fetch(`http://localhost:5000/categories/${params.teamId}`),
             },
@@ -27,7 +45,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: ":paramId",
-                element: <News></News>,
+                element: <PrivateRoute><News></News></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/news/${params.paramId}`)
             },
         ],
