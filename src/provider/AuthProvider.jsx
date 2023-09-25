@@ -11,14 +11,17 @@ const AuthProvider = ({ children }) => {
     const auth = getAuth(app);
     // Register 
     const handleSignUp = (email, password) => {
+        setLoading(false);
         return createUserWithEmailAndPassword(auth, email, password);
     }
     // Login
     const handleSignIn = (email, password) => {
+        setLoading(false);
         return signInWithEmailAndPassword(auth, email, password);
     }
     const LogOut = () => {
-        signOut(auth)
+        setLoading(false);
+        return signOut(auth)
     }
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {

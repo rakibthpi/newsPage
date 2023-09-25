@@ -9,7 +9,7 @@ function Login() {
     const { handleSignIn } = useContext(UserProvider)
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location?.state.url?.pathname || '/';
+    const from = location?.state?.url?.pathname || '/';
 
     const handleLogin = (event) => {
         event.preventDefault();

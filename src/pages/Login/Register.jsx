@@ -3,11 +3,13 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { UserProvider } from "../../provider/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Register = () => {
 
     const { handleSingUp } = useContext(UserProvider)
+    const [accepted, setAccepted] = useState(false);
+
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -26,6 +28,11 @@ const Register = () => {
             })
         console.log("Name", name, "Numebr", number, "Email", email, "Password", password)
     }
+    const handleTerms = (event) => {
+        const from = event.target.checked;
+        setAccepted(from);
+    }
+
     return (
         <div>
             <Row>
@@ -51,9 +58,14 @@ const Register = () => {
                             <Form.Control name="password" type="password" placeholder="Password" />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Check me out" />
+                            <Form.Check
+                                onClick={handleTerms}
+                                type="checkbox"
+                                name="terms"
+                                label={<>Accept <Link to={'/terms'}>Term & Condition</Link></>}
+                            />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
+                        <Button variant="primary" type="submit" disabled={!accepted}>
                             Register
                         </Button>
                         <br />
