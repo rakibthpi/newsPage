@@ -4,8 +4,6 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-console.log("hello firebase", import.meta.env.VITE_Rakib)
-console.log("hello firebase", import.meta.env.VITE_Rakibs)
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_APIKEY,
     authDomain: import.meta.env.VITE_AUTHDOMAIN,
@@ -14,7 +12,6 @@ const firebaseConfig = {
     messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
     appId: import.meta.env.VITE_APPID,
 };
-
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

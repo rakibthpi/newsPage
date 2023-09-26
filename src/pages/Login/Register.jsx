@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 
 const Register = () => {
 
-    const { handleSingUp } = useContext(UserProvider)
+    const { handleSignUp } = useContext(UserProvider)
     const [accepted, setAccepted] = useState(false);
 
 
@@ -18,7 +18,7 @@ const Register = () => {
         const number = form.number.value;
         const email = form.email.value;
         const password = form.password.value;
-        handleSingUp(email, password)
+        handleSignUp(email, password)
             .then((result) => {
                 const user = result.user;
                 console.log(user)

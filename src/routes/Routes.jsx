@@ -40,7 +40,7 @@ const router = createBrowserRouter([
             {
                 path: ":teamId",
                 element: <Catagory></Catagory>,
-                loader: async ({ params }) => fetch(`http://localhost:5000/categories/${params.teamId}`),
+                loader: async ({ params }) => fetch(`https://new-server-ifd8ksamu-rakib-hosens-projects.vercel.app/categories/${params.teamId}`),
             },
         ],
     },
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             {
                 path: ":paramId",
                 element: <PrivateRoute><News></News></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/news/${params.paramId}`)
+                loader: ({ params }) => fetch(`https://new-server-ifd8ksamu-rakib-hosens-projects.vercel.app/news/${params.paramId}`)
             },
         ],
     },
